@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0019)https://sssdfg.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <style>
+            body {
+                background-color: #000000;
+                margin: 0;
+                overflow: hidden;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .sssdfg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                max-width: 35vw;
+                max-height: 35vh;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <img class="sssdfg" src="./sssdfg_files/creature.webp" style="transform: translate(360.395px, 446.425px);">
+
+        <script>
+            const img = document.getElementsByClassName("sssdfg")[0];
+
+            let speedX = 1;
+            let speedY = 1;
+
+            let x = 0;
+            let y = 0;
+
+            function animate() {
+                const rect = img.getBoundingClientRect();
+                const winWidth = window.innerWidth;
+                const winHeight = window.innerHeight;
+
+                x += speedX;
+                y += speedY;
+
+                if (x + rect.width >= winWidth) {
+                    x = winWidth - rect.width;
+                    speedX = -Math.abs(speedX);
+                } else if (x <= 0) {
+                    x = 0;
+                    speedX = Math.abs(speedX);
+                }
+
+                if (y + rect.height >= winHeight) {
+                    y = winHeight - rect.height;
+                    speedY = -Math.abs(speedY);
+                } else if (y <= 0) {
+                    y = 0;
+                    speedY = Math.abs(speedY);
+                }
+
+                img.style.transform = `translate(${x}px, ${y}px)`;
+
+                // shit breaks sometimes on my 240hz monitor
+                // oh well
+                requestAnimationFrame(animate);
+            }
+
+            img.onload = () => {
+                x = Math.random() * (window.innerWidth - img.getBoundingClientRect().width);
+                y = Math.random() * (window.innerHeight - img.getBoundingClientRect().height);
+
+                requestAnimationFrame(animate);
+            };
+        </script>
+    <script type="module" src="./sssdfg_files/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;6aeb0592f3a449bf9682ff29a3fc867e&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+
+</body></html>
